@@ -1,0 +1,70 @@
+function int_ aver [int_ n, int_ m]
+{
+	create int_ result = 0;
+	result = n + m;
+	result = result / 2;
+	give [result];
+}
+
+procedure countn [int_ n]
+{
+	create int_ i = 0;
+	speak ["Counting to length: "];
+	speak [n]; breakl;
+	cycle [i < n]
+	{
+		i = i + 1;
+		speak [i]; speak [" "];
+	}
+}
+
+function bool_ iszero [int_ n]
+{
+	create bool_ buf;
+	where [n ~ 0]
+	{
+		buf = true;
+	}
+	otherwise
+	{
+		buf = false;
+	}
+	give [buf];
+} 
+
+main
+{
+	create str_ string = combine ["Hey ", "POIT!"];
+	speak [string]; breakl;
+	create int_ length = measure [string];
+	speak ["Is length of str > 5?"]; breakl;
+	where [length > 5]
+	{
+		speak ["Yeah! "];
+		countn [length]; breakl;
+	}
+	otherwise 
+	{
+		speak ["It is less"]; breakl;
+	}
+	create int_ ha = exponent [3, 3];
+	create int_ result = aver [4, ha];
+	speak ["Is average of 4 and exponent [3,3] = 0?"]; breakl;
+	create bool_ fl = iszero [result];
+	where [fl]
+	{
+		speak ["It is zero"]; breakl;
+	}
+	otherwise
+	{
+		speak ["It is not zero: "]; 
+		speak [result]; breakl;
+		speak ["Remainer is: "];
+		create int_ hey = (ha + 4) % 2;
+		speak [hey]; breakl;
+	}
+	create int_ heh = randomize [2, 57];
+	speak ["Number of the day is: "];
+	speak [heh]; breakl;
+	speak ["Bye!"];
+}
